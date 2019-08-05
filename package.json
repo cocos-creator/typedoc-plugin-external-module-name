@@ -1,6 +1,6 @@
 {
   "name": "typedoc-plugin-external-module-name",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Specify the Typedoc Module of a file using @module annotation",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/christopherthielen/typedoc-plugin-external-module-name"
+    "url": "https://github.com/cocos-creator/typedoc-plugin-external-module-name"
   },
   "author": "Chris Thielen",
   "license": "MIT",

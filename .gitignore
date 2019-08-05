@@ -4,8 +4,8 @@
 **/.*
 
 # Built using tsc
-plugin.js
-getRawComment.js
+# plugin.js
+# getRawComment.js
 
 # Logs
 logs

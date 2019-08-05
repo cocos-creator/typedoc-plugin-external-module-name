@@ -22,7 +22,7 @@ import { getRawComment } from './getRawComment';
  * ```
  *
  * &#47;**
- *  * @module newModuleName
+ *  * @category newModuleName
  *  *&#47;
  * &#47;** for typedoc &#47;
  * import {foo} from "../foo";
@@ -65,8 +65,8 @@ export class ExternalModuleNamePlugin extends ConverterComponent {
   private onDeclaration(context: Context, reflection: Reflection, node?) {
     if (reflection.kindOf(ReflectionKind.ExternalModule)) {
       let comment = getRawComment(node);
-      // Look for @module
-      let match = /@module\s+([\w\u4e00-\u9fa5\.\-_/@"]+)/.exec(comment);
+      // Look for @category
+      let match = /@category\s+([\w\u4e00-\u9fa5\.\-_/@"]+)/.exec(comment);
       if (match) {
         // Look for @preferred
         let preferred = /@preferred/.exec(comment);
@@ -80,7 +80,7 @@ export class ExternalModuleNamePlugin extends ConverterComponent {
     }
 
     if (reflection.comment) {
-      CommentPlugin.removeTags(reflection.comment, 'module');
+      CommentPlugin.removeTags(reflection.comment, 'category');
       CommentPlugin.removeTags(reflection.comment, 'preferred');
     }
   }
@@ -157,8 +157,8 @@ export class ExternalModuleNamePlugin extends ConverterComponent {
       if (renaming.children) renaming.children.length = 0;
       CommentPlugin.removeReflection(context.project, renaming);
 
-      // Remove @module and @preferred from the comment, if found.
-      CommentPlugin.removeTags(mergeTarget.comment, 'module');
+      // Remove @category and @preferred from the comment, if found.
+      CommentPlugin.removeTags(mergeTarget.comment, 'category');
       CommentPlugin.removeTags(mergeTarget.comment, 'preferred');
     });
   }

@@ -36,7 +36,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
      * ```
      *
      * &#47;**
-     *  * @module newModuleName
+     *  * @category newModuleName
      *  *&#47;
      * &#47;** for typedoc &#47;
      * import {foo} from "../foo";
@@ -73,8 +73,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         onDeclaration(context, reflection, node) {
             if (reflection.kindOf(abstract_1.ReflectionKind.ExternalModule)) {
                 let comment = getRawComment_1.getRawComment(node);
-                // Look for @module
-                let match = /@module\s+([\w\u4e00-\u9fa5\.\-_/@"]+)/.exec(comment);
+                // Look for @category
+                let match = /@category\s+([\w\u4e00-\u9fa5\.\-_/@"]+)/.exec(comment);
                 if (match) {
                     // Look for @preferred
                     let preferred = /@preferred/.exec(comment);
@@ -87,7 +87,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
                 }
             }
             if (reflection.comment) {
-                CommentPlugin_1.CommentPlugin.removeTags(reflection.comment, 'module');
+                CommentPlugin_1.CommentPlugin.removeTags(reflection.comment, 'category');
                 CommentPlugin_1.CommentPlugin.removeTags(reflection.comment, 'preferred');
             }
         }
@@ -154,8 +154,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
                 if (renaming.children)
                     renaming.children.length = 0;
                 CommentPlugin_1.CommentPlugin.removeReflection(context.project, renaming);
-                // Remove @module and @preferred from the comment, if found.
-                CommentPlugin_1.CommentPlugin.removeTags(mergeTarget.comment, 'module');
+                // Remove @category and @preferred from the comment, if found.
+                CommentPlugin_1.CommentPlugin.removeTags(mergeTarget.comment, 'category');
                 CommentPlugin_1.CommentPlugin.removeTags(mergeTarget.comment, 'preferred');
             });
         }
